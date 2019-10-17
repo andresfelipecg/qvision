@@ -27,12 +27,13 @@ public class Qvision1Application {
 	private String baseUrl="https://js.devexpress.com/Demos/DXHotels/#home";
 	private String chromeDriver="src/main/resources/Drivers/chromedriver.exe";
 	
-	@Before
+
+	@BeforeEach
 	  public void setUp() throws Exception {
 		
-		 System.setProperty("webdriver.chrome.driver", chromeDriver);
-		  driver = new ChromeDriver();
-		 
+		 //System.setProperty("webdriver.chrome.driver", chromeDriver);
+		//  driver = new ChromeDriver();
+		
 		  }
 	
 	

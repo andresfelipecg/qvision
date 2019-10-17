@@ -1,5 +1,7 @@
 package com.hotels.model;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.By.ByXPath;
@@ -16,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage {
 	
 	public WebDriver driver;
-	//Actions actions = new Actions(driver);
+	
 	
 	//LOCALIZADORES
 	
@@ -33,8 +35,13 @@ public class HomePage {
 	@FindBy(how=How.XPATH,using="/html/body/div/div/div/div[2]/div[1]/div/div/div[1]/div/div[1]/div[2]/div[1]/div/div/div/div/div/div/div/div/div/div/div/div[2]/div/div[2]/div/div/div/div/div/div/input")
 	WebElement checkOut;
 	
-	@FindBy(how=How.XPATH,using="//div[2]/div/div/div/div/div/div/div[3]/div/div")
-	WebElement search;
+	@FindBy(how=How.XPATH,using="/html/body/div/div/div/div[2]/div[1]/div/div/div[1]/div/div[1]/div[3]/div/div")
+	WebElement  search;
+	
+	//@FindBy(how=How.CLASS_NAME,using="dx-button-content")
+	//List <WebElement>  search;
+	
+	
 	
 	public HomePage (WebDriver driver){
 		this.driver=driver;
@@ -52,10 +59,21 @@ public class HomePage {
 		sentText(checkIn, fechaInicio);
 		sentText(checkOut, fechaFin);
 		
-		WebDriverWait wait2 = new WebDriverWait(driver, 10);
-		wait2.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[2]/div/div/div/div/div/div/div[3]/div/div")));
-		clickOnElement(search);
-		//submitOnElement(search);
+	//	WebDriverWait wait2 = new WebDriverWait(driver, 10);
+	//	wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/div/div/div/div/div/div/div[3]/div/div")));
+		
+		Thread.sleep(3000);
+	   Actions actions = new Actions(driver);
+		actions.moveToElement(search).perform();       
+	    System.out.print("moved");
+	    WebDriverWait wait = new WebDriverWait(driver, 10);
+	    wait.until(ExpectedConditions.elementToBeClickable(search));
+	    search.click();
+		
+		
+	//	clickOnElement(search);
+	//	search.sendKeys(Keys.ENTER);
+	//	submitOnElement(search);
 		//actions.moveToElement(search).click();
 	
 	}

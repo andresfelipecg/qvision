@@ -13,7 +13,7 @@ public class ResultPage {
 	
 	public WebDriver driver;
 	
-	@FindBy(how=How.CSS,using=".hotels-data:nth-child(1) .rate-number")
+	@FindBy(how=How.CSS,using=".hotels-data:nth-child(0) .rate-number")
 	WebElement nightlyRate;
 	
 	//List<WebElement> links= driver.findElements(By.tagName("nightlyRate"));
